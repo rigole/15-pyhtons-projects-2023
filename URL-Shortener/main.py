@@ -1,10 +1,22 @@
 from tkinter import *
+from tkinter import messagebox
 
 window = Tk()
 
 
 def shorten_function():
-    print("Hello World")
+    url_to_short = url_input.get()
+    
+    if len(url_to_short) == 0:
+        messagebox.showinfo(title="Error", message="Please enter an URL")
+
+
+
+
+
+
+
+
 
 window.title("Url Shortener")
 window.minsize(width=500, height=500)
