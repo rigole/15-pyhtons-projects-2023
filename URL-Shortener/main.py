@@ -11,6 +11,7 @@ API_KEY = '5b7e7dd0b74461ad2133b1bd6d9e2aa0c53a0'
 
 def shorten_function():
     url_to_short = url_input.get()
+    #url_shortened_value = url_shortened_label.get()
     key = API_KEY
     url = urllib.parse.quote(url_to_short)
     userDomain = '1'
@@ -20,8 +21,9 @@ def shorten_function():
     else:
         response = requests.get('http://cutt.ly/api/api.php?key={}&short={}'.format(key, url))
         response_json =response.json()
+        url_shortened_label.config(text=response_json["url"]["shortLink"])
         
-        print(response_json["url"]["shortLink"])
+        #print(response_json["url"]["shortLink"])
             
 
 
@@ -46,8 +48,13 @@ url_input.grid(column=0, row=6, rowspan=6, pady=10, ipady=3)
 button_converter = Button(text="Shorten URL", width=25, command=shorten_function)
 button_converter.grid(pady=10, column=0, row=18, rowspan=8)
 
-#URL shortened
-url_shortened_label = Label()
-url_shortened_label.grid(column=0,row=14,rowspan=14, pady=14 )
+#URL shortened Label
+url_shortened_label = Label(text="URL SHORTENED")
+url_shortened_label.grid(column=0,row=35,rowspan=8, pady=14)
+url_shortened_label.config(font=("Courier", 20), justify="center")
 
+
+#URL shortened  value
+url_shortened_label = Label()
+url_shortened_label.grid(column=0,row=55,rowspan=8, pady=14)
 window.mainloop()
