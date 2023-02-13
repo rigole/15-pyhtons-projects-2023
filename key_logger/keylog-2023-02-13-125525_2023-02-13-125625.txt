@@ -1,0 +1,2 @@
+[CAPS_LOCK]I[CAPS_LOCK] am testing the key [BACKSPACE]logger[ENTER]
+
