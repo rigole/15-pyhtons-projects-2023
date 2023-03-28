@@ -28,4 +28,7 @@ while True:
                 if not any(website in line for website in websites_list):
                     file.write(line)
                     
-                    
+            file.truncate()
+            
+        print("FUN hours...")
+    time.sleep(5)
